@@ -1,10 +1,14 @@
-let products = [
-  { id: 1, name: "iPhone x", price: 400 },
-  { id: 2, name: "iPhone 11", price: 450 },
-  { id: 3, name: "iPhone 12", price: 500 },
-  { id: 4, name: "iPhone 13", price: 550 },
-  { id: 5, name: "iPhone 14", price: 600 },
-];
+// let products = [
+//   { id: 1, name: "iPhone x", price: 400 },
+//   { id: 2, name: "iPhone 11", price: 450 },
+//   { id: 3, name: "iPhone 12", price: 500 },
+//   { id: 4, name: "iPhone 13", price: 550 },
+//   { id: 5, name: "iPhone 14", price: 600 },
+// ];
+
+// let productsJson = JSON.stringify(products);
+// localStorage.setItem('products',productsJson);
+let products = JSON.parse(localStorage.getItem('products')) ;
 
 let cart = [];
 
@@ -115,6 +119,7 @@ let getTotal = () => {
 let resetBill = () => {
   table.innerHTML = "";
   totalSpan.innerText = 0;
+  cart = [];
 };
 
 function addNewPhone() {
@@ -122,6 +127,7 @@ function addNewPhone() {
   let price = +prompt("Enter phone price:");
   let newProduct = { id: products.length + 1, name: name, price: price };
   products.push(newProduct);
+  localStorage.setItem('products',JSON.stringify(products));
   productsDiv.innerHTML += `
     <div class="col-12 p-3 bg-white shadow rounded border">
       <h5>${newProduct.name}</h5>
