@@ -8,7 +8,7 @@
 
 // let productsJson = JSON.stringify(products);
 // localStorage.setItem('products',productsJson);
-let products = JSON.parse(localStorage.getItem('products')) ;
+let products = JSON.parse(localStorage.getItem('products')) || [];
 
 let cart = [];
 
